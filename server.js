@@ -5,6 +5,14 @@ const app = express();
 
 app.use(express.json());
 
+app.use(express.static('public'))
+
+const authRoutes = require('./src/routers/authRoutes');
+const purchaseRequestRoutes = require('./src/routers/purchaseRequestRoutes');
+
+app.use('/auth', authRoutes);
+app.use('/purchase-requests', purchaseRequestRoutes);
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'ERP API-ն աշխատում է' });
 });

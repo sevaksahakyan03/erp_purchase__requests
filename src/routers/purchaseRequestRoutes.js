@@ -1,23 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-const { authenticateToken, authorizeRoles } = require('../middleware/authMiddleware');
+const { authenticateToken, authorizeRoles } = require('../middleware/authMiddleware.js');
 
 const { 
   createRequest, 
   getRequests, 
-  updateDraft, 
   submitRequest, 
   approveRequest, 
   rejectRequest 
-} = require('../controllers/purchaseRequestController');
+} = require('../controllers/purchaseRequestController.js');
 
 router.use(authenticateToken);
 
 router.post('/', createRequest); 
 router.get('/', getRequests); 
 
-router.patch('/:id', updateDraft); 
 router.post('/:id/submit', submitRequest); 
 
 router.post('/:id/approve', authorizeRoles('Manager', 'Admin'), approveRequest); 

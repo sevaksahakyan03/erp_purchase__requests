@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const db = require('../db');
+const db = require('../index.js');
 
 const login = async (req, res, next) => {
   try {

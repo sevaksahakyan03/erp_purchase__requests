@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../index.js');
 
 const createRequest = async (req, res, next) => {
   const client = await db.getClient(); 
